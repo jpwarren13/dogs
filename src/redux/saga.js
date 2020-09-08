@@ -10,14 +10,6 @@ function* fetchDog(action) {
    }
 }
 
-// function* dogSaga() {
-//   yield takeEvery("GENERATE_DOG", fetchDog);
-// }
-
-// function* dogSaga() {
-//   yield takeLatest("GENERATE_DOG", fetchDog);
-// }
-
 
 export default function* rootSaga() {
     yield takeEvery('GENERATE_DOG', fetchDog)
