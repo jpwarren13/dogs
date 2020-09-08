@@ -45,7 +45,7 @@ function getRandomBreed(){
 function generateDog(){
     return Promise.all([getRandomBreed(), getNames()]).then(([breeds, names]) =>{return {...breeds, ...names}})
 }
-module.exports = {
+export {
     generateDog,
     getRandomBreed
 }

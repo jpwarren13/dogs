@@ -1,9 +1,9 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-import {getRandomDog} from './api'
+import {generateDog} from './api'
 
 function* fetchDog(action) {
    try {
-      const user = yield call(getRandomDog, action.payload.userId);
+      const user = yield call(generateDog, action.payload.userId);
       yield put({type: "DOG_FETCH_SUCCEEDED", user: user});
    } catch (e) {
       yield put({type: "DOG_FETCH_FAILED", message: e.message});

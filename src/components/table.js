@@ -17,6 +17,7 @@ const DogTable = ({ dogs, sort, toggleSelect }) => {
   const exRegex = /index|selected/;
   const exclusions = ["index", "selected"];
   const [tableDogs, setTableDogs] = useState([...dogs]);
+  const [descending, setDescending] = useState(false);
 
   useEffect(() => {
     setTableDogs(dogs);
@@ -49,8 +50,31 @@ const DogTable = ({ dogs, sort, toggleSelect }) => {
 
                         <Icon
                           name="sort"
-                          onClick={() => {
-                            sort(key);
+                          onClick={(e) => {
+
+                            const sortedDogs = [...tableDogs].sort((a,b) => {
+                              if (descending){
+                                if(a[key] < b[key]){
+                                  return -1;
+                                } if (a[key] > b[key]){
+                                  return 1;
+                                } else{
+                                  return 0
+                                }
+                              }
+                              if(!descending){
+                                if(a[key] > b[key]){
+                                  return -1;
+                                } if (a[key] < b[key]){
+                                  return 1;
+                                } else{
+                                  return 0
+                                }
+                              }
+   
+                            });
+                            setDescending(!descending)
+                            setTableDogs(sortedDogs)
                           }}
                         />
                       </div>
