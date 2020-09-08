@@ -300,6 +300,7 @@ module.exports = function(webpackEnv) {
         ...(modules.webpackAliases || {}),
       },
       plugins: [
+        // new webpack.DefinePlugin({"REACT_APP_API_KEY": JSON.stringify(process.env.REACT_APP_API_KEY)}),
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
         PnpWebpackPlugin,

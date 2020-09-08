@@ -123,7 +123,7 @@ checkBrowsers(paths.appPath, isInteractive)
   )
   .catch(err => {
     if (err && err.message) {
-      console.log(err.message);
+      console.error(err.message, err);
     }
     process.exit(1);
   });
