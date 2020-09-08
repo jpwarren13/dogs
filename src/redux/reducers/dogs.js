@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_DOG, ADD_DOG, REMOVE_DOG, FILTER_DOGS, EDIT_DOG, SORT_DOGS, RENDERED} from "../actionTypes";
+import { TOGGLE_DOG, ADD_DOG, REMOVE_DOG, FILTER_DOGS, EDIT_DOG, SORT_DOGS, RENDERED} from "../actionTypes";
 import dogs from "../data/dogs";
 
 const initialState = {
@@ -89,7 +89,7 @@ export default function(state = initialState, action) {
         return {
           ...state,
           dogs: state.dogs.filter((dog) => {
-              dog[key].includes(filterString)
+              return dog[key].includes(filterString)
           })
         };
       }

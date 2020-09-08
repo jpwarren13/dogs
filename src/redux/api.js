@@ -3,11 +3,11 @@ function getSize(weight){
     const medium = 50;
     const large = 100;
     switch(weight){
-        case weight<20: 
+        case weight< small: 
           return 'SM';
-        case weight <50: 
+        case weight < medium: 
           return 'MD';
-        case weight <100:
+        case weight <large:
         return 'LG';
         default: 
           return 'XL'
@@ -30,13 +30,13 @@ function getNames(){
 }
 function getRandomBreed(){
     const headers = new Headers();
-    headers.append('x-api-key', process.env.API_KEY)
+    headers.append('x-api-key', process.env.REACT_APP_API_KEY)
     return fetch('https://api.thedogapi.com/v1/breeds?attach_breed=0').then(resp => {
         return resp.json();}).then(response => {
         const randomBreed = Math.floor(Math.random() * Math.floor(response.length-1));
         //weight: {imperial: "50 - 60", metric: "23 - 27"}
         console.log(response)
-        const averageWeight = response[randomBreed].weight.imperial.split('-').map(l => Number(l.trim())).reduce((acc, curr) => {acc += curr; return acc}, 0);
+        const averageWeight = response[randomBreed].weight.imperial.split('-').map(l => Number(l.trim())).reduce((acc, curr) => {acc += curr; return acc}, 0)/2;
         return {breed: response[randomBreed].name, size: getSize(averageWeight), description: response[randomBreed].bred_for}
     })
     // .then(({breed, size}) => ({breed, size, names: getNames()})).then(({breed, size, names})=> console.log("WE GOT THEM ALL", breed, size, names)).catch((e) => console.log('THERE WAS AN ERROR RETRIEVING DOG NAME', e));

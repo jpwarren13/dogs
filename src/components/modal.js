@@ -24,14 +24,6 @@ function ModalExampleModal({
         return acc;
       }, {})
   );
-  const [editDogs, setEditDogs] = useState(
-    Object.entries(dogs)
-      .filter(([key, val]) => !/index|selected/.test(key))
-      .reduce((acc, [key, val]) => {
-        acc[key] = val;
-        return acc;
-      }, {})
-  );
   const [allDogs, setAllDogs] = useState([...dogs]);
   const [currentDog, setCurrentDog] = useState(
     [...dogs].findIndex(({ selected }) => selected)

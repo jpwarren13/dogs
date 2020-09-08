@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { Menu } from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import Modal from './modal';
@@ -10,18 +10,7 @@ function DogMenu({ onEditDogs, deleteDogs, randomDog, dogs, onAddDog, setTableDo
     const [modalProps, setModalProps] = useState({});
     const add = useRef(null);
     const edit= useRef(null);
-
-//   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-    function handleAddDog(){
-
-    }
-
-    function handleItemClick(){}
-
-    function reset(){
-
-    }
+ 
 
     const standardModalProps = {
         onShow: () => setShowModal(true),

@@ -4,18 +4,9 @@ import Menu from "./menu";
 import { Table, Checkbox, Input, Icon, Button } from "semantic-ui-react";
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { setFilter } from "../redux/actions";
 
-const headerClass = css`
-  :hover {
-    filter: brightness(0.5);
-  }
-`;
-
-const sortOrder = {name: 1, breed: 2, owner: 3, size: 4, description: 5, default: 1000}
 const DogTable = ({ dogs, sort, toggleSelect }) => {
   const exRegex = /index|selected/;
-  const exclusions = ["index", "selected"];
   const [tableDogs, setTableDogs] = useState([...dogs]);
   const [descending, setDescending] = useState(false);
 
@@ -86,9 +77,9 @@ const DogTable = ({ dogs, sort, toggleSelect }) => {
                               return reg.test(d[key]);
                             });
                             if (filt.length) {
-                              setTableDogs(filt);
+                              return setTableDogs(filt);
                             } else {
-                              setTableDogs([]);
+                              return setTableDogs([]);
                             }
                           }
                         }}
