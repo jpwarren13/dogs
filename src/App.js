@@ -1,26 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
+import Main from './container/main'
+import { connect } from 'react-redux';
 
-function App() {
+function App({dogs}) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Main />
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    // dispatching plain actions
+    rendered: () => dispatch({ type: 'RENDERED' }),
+  }
+} 
+const mapStateToProps = state => {
+  return {
+    dogs: state.dogs
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
